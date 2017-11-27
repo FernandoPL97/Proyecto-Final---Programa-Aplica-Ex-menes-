@@ -1,0 +1,38 @@
+#include <stdio.h>
+//Prototipos del programa
+
+
+int main(){
+  
+  FILE* pregunta_azar=NULL;
+  char* n_archivo= "Preg_2.txt";
+  char pregunta[40];
+  char opciones[40];
+  int respuesta;
+  int res_alu;
+  int puntos;
+  
+  pregunta_azar= fopen(n_archivo, "r");
+  if(pregunta_azar==NULL){
+  	printf("noooooo jala");
+  }
+  
+  fscanf(pregunta_azar," %[^\n]", &pregunta);
+  fscanf(pregunta_azar," %[^\n]", &opciones);
+  fscanf(pregunta_azar," %d", &respuesta);
+  printf("%s\n",pregunta);
+  printf("%s\n",opciones);
+  printf("R=\n");
+  scanf("%d", &res_alu);
+  
+  if (res_alu == respuesta){
+  	puntos++;
+  }
+
+  printf("Respuestas Correctas: %d",puntos);
+  
+
+ fclose(pregunta_azar);
+        
+return 0;
+}
