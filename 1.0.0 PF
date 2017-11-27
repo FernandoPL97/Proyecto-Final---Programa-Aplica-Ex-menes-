@@ -1,17 +1,11 @@
-#include <stdio.h>
-//Prototipos del programa
-
-
 int main(){
-  int puntos=0;
-  char res_alu[1];
-  char respuesta[1];
   
   FILE* pregunta_azar=NULL;
   char* n_archivo= "Preg_2.txt";
   char pregunta[40];
   char opciones[40];
-  
+  int respuesta;
+  int res_alu;
   
   pregunta_azar= fopen(n_archivo, "r");
   if(pregunta_azar==NULL){
@@ -20,18 +14,15 @@ int main(){
   
   fscanf(pregunta_azar," %[^\n]", &pregunta);
   fscanf(pregunta_azar," %[^\n]", &opciones);
-  fscanf(pregunta_azar," %[^\n]", &respuesta);
+  fscanf(pregunta_azar," %d", &respuesta);
   printf("%s\n",pregunta);
   printf("%s\n",opciones);
   printf("R=\n");
-  scanf("%d", &res_alu[1]);
+  scanf("%d", &res_alu);
+  
+  printf("%d\n", respuesta);
+  printf("%d\n", res_alu);
 
-  if (res_alu == respuesta){
-  	 puntos=puntos+1;
-  }
-
-  printf("Respuestas Correctas:");
-  printf("%d", puntos);
 
   
 
