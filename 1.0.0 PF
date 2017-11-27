@@ -1,16 +1,17 @@
-# Proyecto-Final---Programa-Aplica-Examenes-
-El programa aplica un examen que consta de 10 reactivos, las preguntas son de cultura general, las 10 preguntas son obtenidas de una base de reactivos de 30 y son aleatorias, el formato de cada pregunta es txt., al finalizar el examen el programa mostrara la calificación del usuario, el programa es capas de identificar si el usuario ya ha realizado el examen anteriormente y de ser así promediar su calificación de los dos o más exámenes que realice. 
-
 #include <stdio.h>
 //Prototipos del programa
 
 
 int main(){
-
- FILE* pregunta_azar=NULL;
+  int puntos=0;
+  char res_alu[1];
+  char respuesta[1];
+  
+  FILE* pregunta_azar=NULL;
   char* n_archivo= "Preg_2.txt";
   char pregunta[40];
   char opciones[40];
+  
   
   pregunta_azar= fopen(n_archivo, "r");
   if(pregunta_azar==NULL){
@@ -19,11 +20,22 @@ int main(){
   
   fscanf(pregunta_azar," %[^\n]", &pregunta);
   fscanf(pregunta_azar," %[^\n]", &opciones);
+  fscanf(pregunta_azar," %[^\n]", &respuesta);
   printf("%s\n",pregunta);
   printf("%s\n",opciones);
+  printf("R=\n");
+  scanf("%d", &res_alu[1]);
+
+  if (res_alu == respuesta){
+  	 puntos=puntos+1;
+  }
+
+  printf("Respuestas Correctas:");
+  printf("%d", puntos);
+
   
-  
+
  fclose(pregunta_azar);
- 
+        
 return 0;
 }
