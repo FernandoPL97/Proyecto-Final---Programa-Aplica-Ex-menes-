@@ -1,0 +1,33 @@
+#include <stdio.h>
+
+int main(){
+	
+	char nombre_a[30];
+	char num_cuen[9];
+	
+	printf("UNIVERSIDAD NACIONAL AUTONOMA DE MEXICO\n");
+	printf("FACULTAD DE INGENIERIA\n");
+	printf("EXAMEN DE CULTURA GENERAL\n");
+	printf("Alumno: \n");
+	gets(nombre_a);
+	printf("Numero de Cuenta: \n");
+	gets(num_cuen);
+	
+	
+	FILE *archivo;
+	
+	
+	
+	archivo = fopen("Exa.txt", "w");
+	
+		
+	fprintf(archivo, "\n Alumno que Aplico el Examen: ");
+    fputs(nombre_a, archivo);
+    fprintf(archivo, "\n Numero de Cuenta: ");
+    fputs(num_cuen, archivo);
+	
+	
+	fclose(archivo);
+	return 0;
+	
+}
