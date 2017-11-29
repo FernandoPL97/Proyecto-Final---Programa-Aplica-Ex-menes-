@@ -1,0 +1,47 @@
+#include <stdio.h>
+
+
+int main(){
+  
+  FILE* pregunta_azar=NULL;
+  char* n_archivo= "Preg_2.txt";
+  char pregunta[40];
+  char opciones[40];
+  int respuesta;
+  int res_alu=0;
+  int puntos=0;
+  
+  pregunta_azar= fopen(n_archivo, "r");
+  if(pregunta_azar==NULL){
+  	printf("noooooo jala");
+  }
+  
+  fscanf(pregunta_azar," %[^\n]", &pregunta);
+  fscanf(pregunta_azar," %[^\n]", &opciones);
+  fscanf(pregunta_azar,"%i",&respuesta);
+  
+  printf("%s\n",pregunta);
+  printf("%s\n",opciones);
+  printf("R=\n");
+   printf("res_alu");
+  scanf("%d", &res_alu);
+  printf("\n");
+  
+   printf("respuesta");
+  printf("%d", respuesta);
+  printf("\n");
+   printf("res_alu");
+  printf("%d", res_alu);
+   printf("\n");
+  
+  if(respuesta=res_alu){
+  	
+  }
+   printf("puntos");
+   printf("%d", puntos);
+   
+
+ fclose(pregunta_azar);
+        
+return 0;
+}
