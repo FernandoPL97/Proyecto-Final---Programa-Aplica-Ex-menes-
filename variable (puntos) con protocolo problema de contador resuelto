@@ -1,0 +1,94 @@
+#include <stdio.h>
+
+
+	void Lectura_datos_alu();
+    int preguntas();
+    int puntos=0;
+
+
+int main(){
+    int i_preg=0;
+    int puntos=0;
+	
+	Lectura_datos_alu();
+	for(i_preg=0;i_preg<11;i_preg++){
+    preguntas();
+    }
+  
+        
+return 0;
+
+}
+	
+	
+	void Lectura_datos_alu(){
+
+	char nombre_a[30];
+	char num_cuen[9];
+	
+	printf("UNIVERSIDAD NACIONAL AUTONOMA DE MEXICO\n");
+	printf("FACULTAD DE INGENIERIA\n");
+	printf("EXAMEN DE CULTURA GENERAL\n");
+	printf("Alumno: \n");
+	gets(nombre_a);
+	printf("Numero de Cuenta: \n");
+	gets(num_cuen);
+	
+	
+	FILE *archivo;
+	
+	
+	
+	archivo = fopen("Exa.txt", "w");
+	
+		
+	fprintf(archivo, "\n Alumno que Aplico el Examen: ");
+    fputs(nombre_a, archivo);
+    fprintf(archivo, "\n Numero de Cuenta: ");
+    fputs(num_cuen, archivo);
+	
+	
+	fclose(archivo);
+	
+}
+
+
+int preguntas(){
+  	
+	FILE* pregunta_azar=NULL;
+  char* n_archivo= "Preg_2.txt";
+  char pregunta[40];
+  char opciones[40];
+  int respuesta;
+  int res_alu=0;
+
+
+  printf("%d\n",puntos); 
+  
+  pregunta_azar= fopen(n_archivo, "r");
+  if(pregunta_azar==NULL){
+  	printf("noooooo jala");
+   }
+  
+  fscanf(pregunta_azar," %[^\n]", &pregunta);
+  fscanf(pregunta_azar," %[^\n]", &opciones);
+  fscanf(pregunta_azar,"%i",&respuesta);
+  
+   fclose(pregunta_azar);
+  
+  printf("%s\n",pregunta);
+  printf("%s\n",opciones);
+  printf("R=\n");
+  scanf("%i", &res_alu);
+  
+  
+   printf("%i\n",respuesta);
+   printf("%i\n",res_alu); 
+  
+  if( respuesta == res_alu){
+  puntos++;
+  }
+  
+   printf("%d\n",puntos); 
+
+}
