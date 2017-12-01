@@ -1,0 +1,141 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+#include <string.h>
+#include <stdlib.h>
+#include <time.h>
+
+
+	void Lectura_datos_alu();
+	void asignar_cal_exa();
+    int preguntas();
+    int puntos=0;
+    char pregunta_armada[6];
+    char textos[5]=".txt";
+
+int main(){
+    int i_preg=0;
+    int puntos=0;
+    		
+	
+	Lectura_datos_alu();
+	for(i_preg=0;i_preg<10;i_preg++){
+    preguntas();
+    }
+    void asignar_cal_exa();
+  
+        
+return 0;
+
+}
+	
+	
+	void Lectura_datos_alu(){
+
+	char nombre_a[30];
+	char num_cuen[9];
+	
+	printf("UNIVERSIDAD NACIONAL AUTONOMA DE MEXICO\n");
+	printf("FACULTAD DE INGENIERIA\n");
+	printf("EXAMEN DE CULTURA GENERAL\n");
+	printf("Alumno: \n");
+	gets(nombre_a);
+	printf("Numero de Cuenta: \n");
+	gets(num_cuen);
+	
+	
+	FILE *archivo;
+	
+	
+	
+	archivo = fopen("Exa.txt", "w");
+	
+		
+	fprintf(archivo, "\n Alumno que Aplico el Examen: ");
+    fputs(nombre_a, archivo);
+    fprintf(archivo, "\n Numero de Cuenta: ");
+    fputs(num_cuen, archivo);
+	
+	
+	fclose(archivo);
+	
+}
+
+
+int preguntas(){
+	  	
+    int preguntas();
+    int azar_preg();
+    char pregunta_armada[6];
+    char textos[5]=".txt";
+    int numero_preg;
+		
+		
+		
+		
+	srand(time(NULL));
+	
+	numero_preg= 1+ (rand() % 30);
+	
+	sprintf(pregunta_armada, "%d", numero_preg);
+	
+	strcat(pregunta_armada, textos);
+	
+	printf("%s", pregunta_armada);
+	
+	
+	
+	  	
+  FILE* pregunta_azar=NULL;
+  char* n_archivo = pregunta_armada;
+  char* pregunta[40];
+  char* opciones[40];
+  int respuesta;
+  int res_alu=0;
+
+
+  printf("%d\n",puntos); 
+  
+  pregunta_azar= fopen(n_archivo, "r");
+  if(pregunta_azar==NULL){
+  	printf("noooooo jala");
+   }
+  
+  fscanf(pregunta_azar," %[^\n]", &pregunta);
+  fscanf(pregunta_azar," %[^\n]", &opciones);
+  fscanf(pregunta_azar,"%i",&respuesta);
+  
+   fclose(pregunta_azar);
+  
+  printf("%s\n",pregunta);
+  printf("%s\n",opciones);
+  printf("R=\n");
+  scanf("%i", &res_alu);
+  
+  
+   printf("%i\n",respuesta);
+   printf("%i\n",res_alu); 
+  
+  if( respuesta == res_alu){
+  puntos++;
+  }
+  
+   printf("%d\n",puntos); 
+
+}
+   
+void asignar_cal_exa(){
+
+
+    FILE *archivo;
+	
+   archivo= fopen("Exa.txt", "w");
+  if(archivo==NULL){
+  	printf("noooooo jala");
+   }
+   
+	fputs("\nDeben dulces", archivo);
+	
+	fclose(archivo);
+	
+}
