@@ -1,21 +1,25 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
+#include <string.h>
+#include <stdlib.h>
+#include <time.h>
 
 
 
 main(){
 	
-    int numero_preg;
-	
+   char pregunta_arr[8];
+   char textos[6] = ".txt";
+   int numero_preg;
 		
 	srand(time(NULL));
 	
 	numero_preg= 1+ (rand() % 30);
 	
-	printf("%d", numero_preg);
+	sprintf(pregunta_arr, "%d", numero_preg);
 	
-
+	strcat(pregunta_arr,textos);
 	
-	
+	printf("%s", pregunta_arr);
 }
