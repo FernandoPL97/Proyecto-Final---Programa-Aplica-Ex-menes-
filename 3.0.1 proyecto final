@@ -19,6 +19,8 @@
 int main(){
     int i_preg=0;
     int puntos=0;
+    char nombre_a[30];
+	char num_cuen[9];
     		
 	
 	Lectura_datos_alu();
@@ -45,6 +47,20 @@ return 0;
 	gets(nombre_a);
 	printf("Numero de Cuenta: \n");
 	gets(num_cuen);
+	
+	FILE *archivo;
+	
+	
+	
+	archivo = fopen("Exa.txt", "w");
+	
+		
+	fprintf(archivo, "\n Alumno que Aplico el Examen: ");
+    fputs(nombre_a, archivo);
+    fprintf(archivo, "\n Numero de Cuenta: ");
+    fputs(num_cuen, archivo);
+    fclose(archivo);
+    
 	
 	
 }
@@ -106,18 +122,14 @@ int preguntas(){
 
 
 void impre_datos_alu_(){
+	
   	
   	FILE *archivo;
 	
 	
 	
-	archivo = fopen("Exa.txt", "w");
+	archivo = fopen("Exa.txt", "a");
 	
-		
-	fprintf(archivo, "\n Alumno que Aplico el Examen: ");
-    fputs(nombre_a, archivo);
-    fprintf(archivo, "\n Numero de Cuenta: ");
-    fputs(num_cuen, archivo);
     fprintf(archivo, "\n Calificacion: %d", puntos);
     
 	
