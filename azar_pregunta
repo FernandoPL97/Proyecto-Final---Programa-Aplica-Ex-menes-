@@ -1,0 +1,18 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+
+
+main(){
+	
+
+	
+		
+	srand(time(NULL));
+	
+	printf("%d", 1+ (rand() % 30));
+
+	
+	
+}
