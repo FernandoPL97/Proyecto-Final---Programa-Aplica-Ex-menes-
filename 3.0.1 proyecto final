@@ -8,10 +8,13 @@
 
 	void Lectura_datos_alu();
 	void asignar_cal_exa();
+	void impre_datos_alu_();
     int preguntas();
     int puntos=0;
     char pregunta_armada[6];
     char textos[5]=".txt";
+    char nombre_a[30];
+	char num_cuen[9];
 
 int main(){
     int i_preg=0;
@@ -22,7 +25,7 @@ int main(){
 	for(i_preg=0;i_preg<10;i_preg++){
     preguntas();
     }
-    void asignar_cal_exa();
+    impre_datos_alu_();
   
         
 return 0;
@@ -43,21 +46,6 @@ return 0;
 	printf("Numero de Cuenta: \n");
 	gets(num_cuen);
 	
-	
-	FILE *archivo;
-	
-	
-	
-	archivo = fopen("Exa.txt", "w");
-	
-		
-	fprintf(archivo, "\n Alumno que Aplico el Examen: ");
-    fputs(nombre_a, archivo);
-    fprintf(archivo, "\n Numero de Cuenta: ");
-    fputs(num_cuen, archivo);
-	
-	
-	fclose(archivo);
 	
 }
 
@@ -115,19 +103,27 @@ int preguntas(){
   }
 
 }
-   
-void asignar_cal_exa(){
 
 
-    FILE *archivo;
+void impre_datos_alu_(){
+  	
+  	FILE *archivo;
 	
-   archivo= fopen("Exa.txt", "w");
-  if(archivo==NULL){
-  	printf("noooooo jala");
-   }
-   
-	fputs("\nDeben dulces", archivo);
+	
+	
+	archivo = fopen("Exa.txt", "w");
+	
+		
+	fprintf(archivo, "\n Alumno que Aplico el Examen: ");
+    fputs(nombre_a, archivo);
+    fprintf(archivo, "\n Numero de Cuenta: ");
+    fputs(num_cuen, archivo);
+    fprintf(archivo, "\n Calificacion: %d", puntos);
+    
+	
 	
 	fclose(archivo);
+  	
 	
+		
 }
