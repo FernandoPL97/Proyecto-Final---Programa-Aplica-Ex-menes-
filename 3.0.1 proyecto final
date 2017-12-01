@@ -55,9 +55,10 @@ return 0;
 	archivo = fopen("Exa.txt", "w");
 	
 		
-	fprintf(archivo, "\n Alumno que Aplico el Examen: ");
+	fprintf(archivo, "Alumno que Aplico el Examen: \n");
     fputs(nombre_a, archivo);
-    fprintf(archivo, "\n Numero de Cuenta: ");
+    fprintf(archivo, "\n");
+    fprintf(archivo, "Numero de Cuenta: \n");
     fputs(num_cuen, archivo);
     fclose(archivo);
     
@@ -130,7 +131,7 @@ void impre_datos_alu_(){
 	
 	archivo = fopen("Exa.txt", "a");
 	
-    fprintf(archivo, "\n Calificacion: %d", puntos);
+    fprintf(archivo, "\nCalificacion:\n %d",puntos);
     
 	
 	
@@ -138,4 +139,34 @@ void impre_datos_alu_(){
   	
 	
 		
+}
+
+
+void ale_exa_exa_ant(){
+	
+	
+   char nombre_usuario_open[3];
+   char num_c_usuario[9];
+   int punto;
+	
+  FILE* conprovar=NULL;
+  
+  conprovar= fopen("Exa.txt", "r");
+  if(conprovar==NULL){
+  	printf("Archivo de registro no encontrado");
+   }
+  
+  fscanf(conprovar," %[^\n]", &nombre_usuario_open);
+  fscanf(conprovar," %[^\n]", &num_c_usuario);
+  fscanf(conprovar,"%i",&punto);
+  
+  fclose(conprovar);
+  
+  printf("\n");
+  printf("%s\n",nombre_usuario_open);
+  printf("\n");
+  printf("%s\n",num_c_usuario);
+  printf("\n");
+  printf("%s\n",punto);
+	
 }
