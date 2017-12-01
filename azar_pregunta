@@ -6,12 +6,15 @@
 
 main(){
 	
-
+    int numero_preg;
 	
 		
 	srand(time(NULL));
 	
-	printf("%d", 1+ (rand() % 30));
+	numero_preg= 1+ (rand() % 30);
+	
+	printf("%d", numero_preg);
+	
 
 	
 	
