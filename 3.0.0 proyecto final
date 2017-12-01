@@ -81,8 +81,6 @@ int preguntas(){
 	
 	strcat(pregunta_armada, textos);
 	
-	printf("%s", pregunta_armada);
-	
 	
 	
 	  	
@@ -92,9 +90,7 @@ int preguntas(){
   char* opciones[40];
   int respuesta;
   int res_alu=0;
-
-
-  printf("%d\n",puntos); 
+ 
   
   pregunta_azar= fopen(n_archivo, "r");
   if(pregunta_azar==NULL){
@@ -106,21 +102,17 @@ int preguntas(){
   fscanf(pregunta_azar,"%i",&respuesta);
   
    fclose(pregunta_azar);
-  
+  printf("\n");
   printf("%s\n",pregunta);
+  printf("\n");
   printf("%s\n",opciones);
   printf("R=\n");
   scanf("%i", &res_alu);
   
   
-   printf("%i\n",respuesta);
-   printf("%i\n",res_alu); 
-  
   if( respuesta == res_alu){
   puntos++;
   }
-  
-   printf("%d\n",puntos); 
 
 }
    
