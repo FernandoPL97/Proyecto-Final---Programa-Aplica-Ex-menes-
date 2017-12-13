@@ -7,6 +7,7 @@
 
     void promedios();
 	void Lectura_datos_alu();
+	void imprime_datos();
 	void asignar_cal_exa();
 	void impre_datos_alu_();
     int preguntas();
@@ -155,11 +156,10 @@ void impre_datos_alu_(){
 	while((x=getchar()) != EOF){
 	switch(x){
 	case 'A' : case 'a' :
-	Lectura_datos_alu();
 	for(i_preg=0;i_preg<10;i_preg++){
     preguntas();
     }
-    impre_datos_alu_();
+    imprime_datos();
 	break;	
 	case 'B' : case 'b':
 	printf("hasta la proxima");
@@ -174,22 +174,53 @@ void impre_datos_alu_(){
 		
 		
 	}
+}
+}
+void imprime_datos(){
+
+	
+	
+	
+  	
+  	FILE *archivo;
+	
+	
+	
+	archivo = fopen("Exa2.txt", "w");
+	
+    fprintf(archivo, "\nCalificacion:\n %d",puntos);
+    
+	
+	
+	fclose(archivo);
+  	printf("Concluyo el examen\n");
+	printf("tu calificacion final es : %d\n",puntos);
+	printf("deseas volver a hacer el examen ?");
+	while((x=getchar()) != EOF){
+	switch(x){
+	case 'A' : case 'a' :
+	for(i_preg=0;i_preg<10;i_preg++){
+    preguntas();
+    }
+    imprime_datos();
+	break;	
+	case 'B' : case 'b':
+	printf("hasta la proxima");
+	case '\n': case ' ':
+			break;
+	default:
+		printf("valor incorrecto\n");
+		printf("ingrese de nuevo el valor");
 		
 		
 		
 		
 		
 	}
-
-		
+	
 }
-
-
-
-
-
-
-
+ 
+}
 
 
 
