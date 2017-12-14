@@ -1,0 +1,241 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>     // Librerias necesarias para el correcto funcionamiento de palabras reservadas,intrucciones, asignaciones necesarias para el funcionamiento del programa//      
+#include <string.h>
+#include <stdlib.h>
+#include <time.h>
+
+    void promedios();
+	void Lectura_datos_alu();
+	void Lectura_datos_alu_nuev();
+	void imprime_datos();              //Protocolos del porgrama//
+	void asignar_cal_exa();
+	void impre_datos_alu_();
+    int preguntas();
+    int puntos;
+    char pregunta_armada[6];
+    char textos[5]=".txt";
+    char nombre_a[30];
+	char num_cuen[9]; 
+
+int main(){
+    int i_preg=0;
+    int puntos=0;
+    char nombre_a[30];
+	char num_cuen[9];                             // main central que llama a las funciones del programa//
+    	
+	
+	Lectura_datos_alu();
+	for(i_preg=0;i_preg<10;i_preg++){
+    preguntas();
+    }
+    impre_datos_alu_();
+  
+      
+      
+ return 0;
+
+}
+	
+	
+	void Lectura_datos_alu(){
+
+	char nombre_a[30];
+	char num_cuen[9];
+	char grade;
+	
+	printf("\t\t\tUNIVERSIDAD NACIONAL AUTONOMA DE MEXICO\n");
+	printf("\t\t\t\tFACULTAD DE INGENIERIA\n");                      //Impresion de la presentacion del programa//
+	printf("\t\t\t\tEXAMEN DE CULTURA GENERAL\n\n\n");
+	printf("Alumno: \n");                                            
+	gets(nombre_a);
+	printf("Numero de Cuenta: \n");                                //lectura de datos del alumno que aplica el examen//
+	gets(num_cuen);
+	
+	
+	FILE *archivo;
+		
+	                                                            
+	archivo = fopen("Exa.txt", "w");                             //Asignacion de los datos del alumno a un archivo .txt llamado Exa.txt//
+	                                                                 
+		
+	fprintf(archivo, "Alumno que Aplico el Examen: \n");
+    fputs(nombre_a, archivo);
+    fprintf(archivo, "\n");
+    fprintf(archivo, "Numero de Cuenta: \n");
+    fputs(num_cuen, archivo);
+    fclose(archivo);
+    
+	
+}
+
+
+
+int preguntas(){
+	  	
+    int preguntas();
+    int azar_preg();                    //variables de la funcion preguntas, la cual hace la seleccion al azar, impresion y lectura de la respuesta del alumno//
+    char pregunta_armada[6];
+    char textos[5]=".txt";
+    int numero_preg;
+		
+		
+		
+		
+	srand(time(NULL));
+	
+	numero_preg= 1+ (rand() % 30);               //usando el reloj como semillero para seleccionar una pregunta al azar, se arma un arreglo de cadena con el nombre del archivo, el cual debe estar entre las 30 posibilidades del banco de preguntas//
+
+	sprintf(pregunta_armada, "%d", numero_preg);
+	
+	strcat(pregunta_armada, textos);           //armado de dos cadenas que conforman el nombre del archivo .txt//
+	
+	
+	
+	  	
+  FILE* pregunta_azar=NULL;
+  char* n_archivo = pregunta_armada;
+  char* pregunta[40];
+  char* opciones[40];                          // variables necesarias para la lectura e impresion del alchivo .txt//
+  int respuesta;
+  int res_alu=0;
+ 
+  
+  pregunta_azar= fopen(n_archivo, "r");        //confirmacion de lectura del archivo (que no se encuentre vacio y exista)//
+  if(pregunta_azar==NULL){
+  	printf("noooooo jala");
+   }
+  
+  fscanf(pregunta_azar," %[^\n]", &pregunta);    //lectura de la primera linea hasta salto de pagina (ENTER) asignado a la cadena: (char pregunta)// 
+  fscanf(pregunta_azar," %[^\n]", &opciones);    //lectura de la segunda linea hasta salto de pagina (ENTER) asignado a la cadena: (char opciones)// 
+  fscanf(pregunta_azar,"%i",&respuesta);         //lectura de la tercera linea hasta salto de pagina (ENTER) asignado al entero: (int respuesta)// 
+  fclose(pregunta_azar);                         //close de archivo n_archivo, practica sana en el manejo de archivos//
+  
+  
+  
+  printf("\n");                    //impresion de la cadena: (char pregunta)//
+  printf("%s\n",pregunta);
+  printf("\n");                    //impresion de la cadena: (char opciones)//
+  printf("%s\n",opciones);
+  printf("R=\n");
+  scanf("%i", &res_alu);           //entrada de la respuesta del alumno//  //asignada al entero (int res_alu)//
+  printf("\n");
+  printf("\n");
+  
+  
+  if( respuesta == res_alu){      //comparacion de la respuesta con la respuesta del alumno//
+  puntos++;                       //acomulador asignado a la calificacion del alumno en el examen//
+  }
+
+
+
+
+
+
+}
+
+
+int x;
+int i_preg=0;
+
+
+void impre_datos_alu_(){
+	
+  	
+  	FILE *archivo;                     //se apendisa la calificaion al archivo llamado Exa.txt//
+	
+	
+	
+	archivo = fopen("Exa.txt", "a"); 
+	
+    fprintf(archivo, "\nCalificacion:\n %d",puntos);
+    
+	fclose(archivo);
+	
+	printf("\n");
+  	printf("Concluyo el examen\n\a");
+  	printf("\n");
+  	while((x=getchar()) != EOF){
+	printf("Tu calificacion final es : %d\n",puntos);
+	printf("\n");
+	printf("\n");
+	printf("pulsa A para repetirlo con tu mismo numero de cuenta\n");       //impresion de opciones que el usuario puede tomar: repetir el examen, dejar el programa a otro alumno o cerrar la ejecucion//
+	printf("\n");
+	printf("pulsa B para repetir el examen con un nuevo numero de cuenta\n");
+	printf("\n");
+	printf("pulsa EOF (ctrl z) para salir\n");
+	
+	switch(x){
+		
+	case 'A' : case 'a' :
+	for(i_preg=0;i_preg<10;i_preg++){
+    preguntas();
+    }
+    imprime_datos();                              //selectror multiple con varible numerica que el usuario asigna//
+	break;
+		
+	case 'B' : case 'b':
+		Lectura_datos_alu_nuev();
+	for(i_preg=0;i_preg<10;i_preg++){
+    preguntas();
+    }
+    impre_datos_alu_();
+	
+	case '\n': case ' ':	
+	break;
+	
+	
+	
+	default:
+		printf("valor incorrecto\n");          //limita la sentencia si esta fuera del rango de las opciones// 
+		printf("ingrese de nuevo el valor");
+		
+		
+		
+		
+		
+	}
+}
+}
+
+
+void imprime_datos(){
+    int puntos_a;
+	
+	
+	
+  	
+  	FILE *archivo;
+	
+	
+	
+	archivo = fopen("Exa2.txt", "w");                    //imprime datos en archivo .txt// //esto si el alumno decidio realizar de nuevo el examen//
+	
+    fprintf(archivo, "\nCalificacion:\n %d",puntos);
+    puntos_a=puntos;
+	
+	
+	fclose(archivo);
+  		
+		
+	}
+
+void Lectura_datos_alu_nuev(){
+	
+    char nombre_a[30];
+	char num_cuen[9];                                   //imprime datos en archivo .txt// //esto si el alumno decidio realizar de nuevo el examen//
+    printf("Alumno: \n");
+	gets(nombre_a);
+	printf(" \n");
+	gets(num_cuen);
+	
+	FILE *archivo;
+	
+	archivo = fopen("Exanuev.txt", "w");
+	
+	fprintf(archivo, "\n");
+    fprintf(archivo, "Numero de Cuenta: \n");
+    fputs(num_cuen, archivo);
+    fclose(archivo); 
+
+}
